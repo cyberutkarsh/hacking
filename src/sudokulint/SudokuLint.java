@@ -26,10 +26,15 @@ public class SudokuLint {
         final int[][] solutiongrid4 = su.readFiletoArray("inputs/sample_mehul.txt");
         
         SudokuHelper sh = new SudokuHelper();
-        System.out.println(sh.validateSudoku(solutiongrid1));
-        System.out.println(sh.validateSudoku(solutiongrid2));
+        //System.out.println(sh.calculateExecutionTime(solutiongrid1));
+        //System.out.println(sh.calculateExecutionTime(solutiongrid2));
         System.out.println(sh.validateSudoku(solutiongrid3));
-        System.out.println(sh.validateSudoku(solutiongrid4));
+        //System.out.println(sh.calculateExecutionTime(solutiongrid4));
+        
+        //Testing running times
+        for(int gridroot=5;gridroot<101;gridroot+=5){
+            System.out.println(sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
+        }            
         
         //System.out.println(sh.validateSudoku(sh.generateSudoKu(100)));
     }

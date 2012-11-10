@@ -111,5 +111,16 @@ public class SudokuHelper {
            }
         }
         return transposedarray;
-    }            
+    }
+    
+    //I calculate execution times
+    public long calculateExecutionTime(int[][] solutiongrid){        
+        long startTime = System.currentTimeMillis();
+        //Run the program
+        validateSudoku(solutiongrid);        
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;                
+        
+        return totalTime;
+    }
 }
