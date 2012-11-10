@@ -1,4 +1,5 @@
-hacking
+Sudoku Lint
+Author: Utkarsh C
 =======
-
-coding for fun
+This program is used to parse a set of input .txt file containing proposed sudoku solutions and then validate
+the solutions for correctness.
