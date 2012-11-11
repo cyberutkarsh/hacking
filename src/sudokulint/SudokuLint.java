@@ -56,7 +56,7 @@ public class SudokuLint {
                           }
                           break;
                 case 2 :  sh.getSystemInfo(); //Dump the system Info
-                          for(int gridroot=2;gridroot<101;gridroot++){ //Calculate running time
+                          for(int gridroot=2;gridroot<31;gridroot++){ //Calculate running time
                             System.out.println("Sudoku Size: "+(gridroot*gridroot)+" x "+(gridroot*gridroot)+" Time in ms: "+sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
                           }
                           break;
