@@ -28,12 +28,15 @@ public class SudokuLint {
         SudokuHelper sh = new SudokuHelper();
         //System.out.println(sh.calculateExecutionTime(solutiongrid1));
         //System.out.println(sh.calculateExecutionTime(solutiongrid2));
-        System.out.println(sh.validateSudoku(solutiongrid3));
+        //System.out.println(sh.validateSudoku(solutiongrid3));
         //System.out.println(sh.calculateExecutionTime(solutiongrid4));
         
+        //Dump the system Info
+        sh.getSystemInfo();
+        
         //Testing running times
-        for(int gridroot=5;gridroot<101;gridroot+=5){
-            System.out.println(sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
+        for(int gridroot=2;gridroot<101;gridroot++){
+            System.out.println("Sudoku Size: "+(gridroot*gridroot)+" x "+(gridroot*gridroot)+" Time in ms: "+sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
         }            
         
         //System.out.println(sh.validateSudoku(sh.generateSudoKu(100)));

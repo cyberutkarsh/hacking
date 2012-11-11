@@ -7,6 +7,8 @@ package sudokulint;
 import java.util.Arrays;
 import java.io.*;
 import java.util.*;
+import javax.sound.midi.SysexMessage;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -114,7 +116,7 @@ public class SudokuHelper {
     }
     
     //I calculate execution times
-    public long calculateExecutionTime(int[][] solutiongrid){        
+    public long calculateExecutionTime(int[][] solutiongrid){                
         long startTime = System.currentTimeMillis();
         //Run the program
         validateSudoku(solutiongrid);        
@@ -122,5 +124,14 @@ public class SudokuHelper {
         long totalTime = endTime - startTime;                
         
         return totalTime;
+    }
+    
+    public void getSystemInfo(){
+        //get system info
+        System.out.println("System Information");
+        System.out.println("------------------");
+        System.out.println("Available Processors: "+Runtime.getRuntime().availableProcessors());
+        System.out.println("Max Memory to JVM: "+String.valueOf(Runtime.getRuntime().maxMemory()/1000000)+" MB");
+        System.out.println();
     }
 }
