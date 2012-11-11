@@ -16,11 +16,11 @@ public class SudokuHelper {
     String solutioninvalid;
     
     SudokuHelper(){
-        solutionvalid = "The sodoku solution is correct!";
-        solutioninvalid = "The sodoku solution is In-Correct!";
+        solutionvalid = "The Sodoku solution is correct!";
+        solutioninvalid = "The Sodoku solution is In-Correct!";
     }
     
-    // I generate root solutions
+    // I generate root solutions for a NxN Sudoku grid using simple polynomial time algorithm o(n^2) in this case
     public int[][] generateSudoKu(int gridroot){        
         final int[][] grid = new int[gridroot*gridroot][gridroot*gridroot];
         for (int i = 0; i < gridroot*gridroot; i++)
@@ -42,7 +42,7 @@ public class SudokuHelper {
         }
         
         
-        //Check the sub squares
+        //Check the N sub squares for validity
         if(!checkSubGrids(solutiongrid))
             return solutioninvalid;
         
@@ -86,7 +86,7 @@ public class SudokuHelper {
         return false;
     }
     
-    //I check duplicates in 2d arrays
+    //I check duplicates in 2d arrays: mainly used to check the sub grids in our case
     private boolean checkDuplicates(final int[][] inputarray){
         Set<Integer> cells = new HashSet<Integer>();
         for (int[] i : inputarray){
@@ -122,12 +122,14 @@ public class SudokuHelper {
         return totalTime;
     }
     
+    //I get system info
     public void getSystemInfo(){
         //get system info
         System.out.println("System Information");
         System.out.println("------------------");
         System.out.println("Available Processors: "+Runtime.getRuntime().availableProcessors());
         System.out.println("Max Memory to JVM: "+String.valueOf(Runtime.getRuntime().maxMemory()/1000000)+" MB");
+        System.out.println("------------------");
         System.out.println();
     }
 }

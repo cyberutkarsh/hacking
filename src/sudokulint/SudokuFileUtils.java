@@ -9,6 +9,7 @@ import java.util.HashMap;
 /**
  *
  * @author Utkarsh C
+ * Basic files utilities
  */
 public class SudokuFileUtils {            
     final File folder;
@@ -27,22 +28,26 @@ public class SudokuFileUtils {
         return hmFiles;
     } 
     
-    //I read files into arrays
-    public int[][] readFiletoArray(String filename){                                        
+    //I read files into 2d arrays
+    public int[][] readFiletoArray(String filename) throws IOException{                                        
         
         String line;
         int x=0,lines=0;
-        int[][] inputgrid=null; //Empty grid    
+        int[][] inputgrid=null; //Empty grid
+        BufferedReader reader = null;
         try
         {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
-            reader.mark(1000); //Mark the stream to reset later
+            reader = new BufferedReader(new FileReader(filename));
+            reader.mark(10000); //Mark the stream to reset later
             
             while (reader.readLine() != null) lines++; //counting the rows which is =  columns
                        
             inputgrid = new int[lines][lines]; //now that we know the dimensions re-intialize it            
             
-            reader.reset(); //Reset the reader to the start postion
+            /*Reset the reader to the start postion to now read the columns, 
+             * should not be too much of an overhead as files size is low
+            */
+            reader.reset();
             
             while ((line = reader.readLine()) != null){
                String[] values = line.split(",");
@@ -56,9 +61,11 @@ public class SudokuFileUtils {
                x=x+1;
                //System.out.println(""); // debug
             }            
-            reader.close();
         }catch(IOException ioException ) {
             System.out.println(ioException.getMessage());
+        }finally{
+            if(reader!=null)
+                reader.close();
         }	
         
         return inputgrid;
