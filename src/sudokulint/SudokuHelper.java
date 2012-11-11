@@ -68,12 +68,12 @@ public class SudokuHelper {
                     }
                     newRow++;
                 }
-                if(containsDuplicate(newArray))
-                    return false;
+                if(!containsDuplicate(newArray))
+                    return true;
             }
         }
         
-        return true;
+        return false;
     }
     
     //I check duplicates in the 1D array

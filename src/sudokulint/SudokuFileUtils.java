@@ -61,8 +61,8 @@ public class SudokuFileUtils {
                x=x+1;
                //System.out.println(""); // debug
             }            
-        }catch(IOException ioException ) {
-            System.out.println(ioException.getMessage());
+        }catch(Exception e) {            
+            return null;
         }finally{
             if(reader!=null)
                 reader.close();

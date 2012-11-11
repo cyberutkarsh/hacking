@@ -30,6 +30,7 @@ public class SudokuLint {
             //Read user input
             InputStreamReader in = new InputStreamReader(System.in); 
             BufferedReader br = new BufferedReader(in);
+            int[][] solutiongrid = null;
             int input=0;
             
             try{
@@ -43,7 +44,8 @@ public class SudokuLint {
             SudokuHelper sh = new SudokuHelper();
 
             switch (input){
-                case 1 :  HashMap hmFiles = new HashMap();        
+                case 1 :  try{
+                          HashMap hmFiles = new HashMap();        
                           SudokuFileUtils sfu = new SudokuFileUtils();                                                
                           hmFiles=sfu.listFilesInFolder(); //Get the files HashMap                        
                           Set set = hmFiles.entrySet();
@@ -51,13 +53,22 @@ public class SudokuLint {
                           System.out.println();
                           while(i.hasNext()){ //Validating all the inputs files in the inputs directory
                             Map.Entry me = (Map.Entry)i.next();
-                            System.out.println(">> Validating: "+me.getKey()+" - "+sh.validateSudoku(sfu.readFiletoArray((String)me.getValue())));
+                            solutiongrid=sfu.readFiletoArray((String)me.getValue());
+                            System.out.println(">> Validating: "+me.getKey()+" - "
+                                    +(solutiongrid==null?"Invalid input file":sh.validateSudoku(solutiongrid)));
                             System.out.println();
+                          }
+                          }catch(NullPointerException npe){
+                              System.out.println();
+                              System.out.println("Please Make sure that the 'inputs' directory is present "
+                                      + "in the same directory as the jar file and it has valid .txt files");
                           }
                           break;
                 case 2 :  sh.getSystemInfo(); //Dump the system Info
                           for(int gridroot=2;gridroot<31;gridroot++){ //Calculate running time
-                            System.out.println("Sudoku Size: "+(gridroot*gridroot)+" x "+(gridroot*gridroot)+" Time in ms: "+sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
+                            System.out.println("N(length of the side)= "+(gridroot*gridroot)
+                                    +" , Time in miliseconds= "
+                                    +sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
                           }
                           break;
                 case 3 :  System.exit(0);
