@@ -21,7 +21,7 @@ public class SudokuLint {
             //Display Choices            
             System.out.println();
             System.out.println();
-            System.out.println("1 Validate Sudoku's: Validates the Sudoku .txt files in the 'input' directory");
+            System.out.println("1 Validate Sudoku's: Validates the posible Sudoku solution files in 'input' directory");
             System.out.println("2 See Execution Times: Runs the validator against Sudoku grids of various dimensions");
             System.out.println("3 Exit");
             System.out.println();
