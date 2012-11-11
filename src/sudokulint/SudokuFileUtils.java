@@ -18,15 +18,21 @@ public class SudokuFileUtils {
 
         @Override
         public boolean accept(File folder, String filename) {
-            return filename.endsWith(".txt");
+            return filename.endsWith(".txt"); //list only the .txt files
         }
     };
-            
+    
+    /**
+     * Constructor: Define folder
+     */
     SudokuFileUtils(){
         folder = new File("inputs");        
     }
     
-    //I return all files in the directory
+    /**
+     * I put all files in the folder in a map
+     * @return hashmap of files names,paths
+     */
     public HashMap<String,String> listFilesInFolder() {
         HashMap hmFiles= new HashMap();        
         for (final File fileEntry : folder.listFiles(filter)) {
@@ -36,7 +42,12 @@ public class SudokuFileUtils {
         return hmFiles;
     } 
     
-    //I read files into 2d arrays
+    /**
+     * I read files into 2D arrays
+     * @param filename
+     * @return 2D array
+     * @throws IOException 
+     */
     public int[][] readFiletoArray(String filename) throws IOException{                                        
         
         String line;

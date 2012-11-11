@@ -1,26 +1,32 @@
 package sudokulint;
 
-import java.util.Arrays;
-import java.io.*;
 import java.util.*;
-import javax.sound.midi.SysexMessage;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
  * @author Utkarsh C
+ * Main class withe helper functions to
+ * validate the Sudoku solutions
  */
 public class SudokuHelper {    
     
     String solutionvalid;
     String solutioninvalid;
     
+    /**
+     * Constructor
+     */
     SudokuHelper(){
         solutionvalid = "The Sodoku solution is correct!";
-        solutioninvalid = "The Sodoku solution is In-Correct!";
+        solutioninvalid = "The Sodoku solution is wrong!";
     }
-    
-    // I generate root solutions for a NxN Sudoku grid using simple polynomial time algorithm o(n^2) in this case
+        
+    /**
+     * I generate root solutions for a NxN Sudoku grid using simple polynomial 
+     * time algorithm o(n^2) in this case
+     * @param gridroot
+     * @return 2D array of valid Soduku solution
+     */
     public int[][] generateSudoKu(int gridroot){        
         final int[][] grid = new int[gridroot*gridroot][gridroot*gridroot];
         for (int i = 0; i < gridroot*gridroot; i++)
@@ -29,8 +35,12 @@ public class SudokuHelper {
         
         return grid;        
     }
-    
-    // I check the Sudoku solutions
+             
+    /**
+     * I validate the Sudoku solutions
+     * @param solutiongrid : 2D array of the possible sudoku solution
+     * @return true or false based on the sudoku validity
+     */
     public String validateSudoku(int[][] solutiongrid){                
         final int[][] rowarray = solutiongrid;
         final int[][] columnarray = transpose(solutiongrid); //Transpose the array so that we can check the columns now for dupes
@@ -49,7 +59,11 @@ public class SudokuHelper {
         return solutionvalid;
     }            
     
-    //I check if the row is valid
+    /**
+     * I check if the sub squares within the Sudoku meet validity conditions
+     * @param solutiongrid
+     * @return boolean
+     */
     public boolean checkSubGrids(int[][] solutiongrid){                        
         //Number of subgrids
         final int numgrids = solutiongrid.length;
@@ -75,8 +89,12 @@ public class SudokuHelper {
         
         return false;
     }
-    
-    //I check duplicates in the 1D array
+        
+    /**
+     * I check dupes in a 1D array
+     * @param inputarray[]
+     * @return true or false based on dupes in the array
+     */
     private boolean containsDuplicate(final int[] inputarray){
         Set<Integer> cells = new HashSet<Integer>();
         for (int i : inputarray){
@@ -86,7 +104,11 @@ public class SudokuHelper {
         return false;
     }
     
-    //I check duplicates in 2d arrays: mainly used to check the sub grids in our case
+    /**
+     * Overriden method I check dupes in a 2D array     
+     * @param 2D inputarray array
+     * @return true or false based on dupes in the array
+     */
     private boolean containsDuplicate(final int[][] inputarray){
         Set<Integer> cells = new HashSet<Integer>();
         for (int[] i : inputarray){
@@ -98,7 +120,11 @@ public class SudokuHelper {
         return false;
     }
     
-    //I transpose the array
+    /**
+     * I transpose arrays ; rows=columns and columns=rows
+     * @param 2D array inputarray
+     * @return transposed 2D array 
+     */
     private int[][] transpose(int [][] inputarray){
         int x = inputarray.length;
         int y = inputarray[x - 1].length;
@@ -111,7 +137,11 @@ public class SudokuHelper {
         return transposedarray;
     }
     
-    //I calculate execution times
+    /**
+     * I calculate sample execution times
+     * @param 2D array of the solutiongrid of sudoku
+     * @return total time for the validation
+     */ 
     public long calculateExecutionTime(int[][] solutiongrid){                
         long startTime = System.currentTimeMillis();
         //Run the program
@@ -122,7 +152,11 @@ public class SudokuHelper {
         return totalTime;
     }
     
-    //I get system info
+    /**
+     * I generate system Info
+     * @param none
+     * @return none
+     */
     public void getSystemInfo(){
         //get system info
         System.out.println("System Information");

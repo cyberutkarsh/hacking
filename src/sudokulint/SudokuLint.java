@@ -54,8 +54,8 @@ public class SudokuLint {
                           while(i.hasNext()){ //Validating all the inputs files in the inputs directory
                             Map.Entry me = (Map.Entry)i.next();
                             solutiongrid=sfu.readFiletoArray((String)me.getValue());
-                            System.out.println(">> Validating: "+me.getKey()+" - "
-                                    +(solutiongrid==null?"Invalid input file":sh.validateSudoku(solutiongrid)));
+                            System.out.println(">> Validating File:"+me.getKey()+" - "
+                                    +(solutiongrid==null?"Invalid input file":sh.validateSudoku(solutiongrid))); // Only run validation when input file can be parsed
                             System.out.println();
                           }
                           }catch(NullPointerException npe){
@@ -65,7 +65,7 @@ public class SudokuLint {
                           }
                           break;
                 case 2 :  sh.getSystemInfo(); //Dump the system Info
-                          for(int gridroot=2;gridroot<31;gridroot++){ //Calculate running time
+                          for(int gridroot=2;gridroot<31;gridroot++){ //Calculate running time also doubles as a test script
                             System.out.println("N(length of the side)= "+(gridroot*gridroot)
                                     +" , Time in miliseconds= "
                                     +sh.calculateExecutionTime(sh.generateSudoKu(gridroot)));
