@@ -19,13 +19,13 @@ How To Run:
               ranging from (2^2) - (30^2). The generateSudoku() fucntions creates root solutions i.e.valid NxN Sudoku's and the validateSudoku 
               tests its validity and eventually the checkExecutionTime() gives the run times for  the program.
     Option 3: This is to exit the Sudoku Lint program, it will run indefinitely waiting on user input unless exited by option 3            
-5.You can add your own Sudoku plus solutions to validate against the program (Option 1) , but please note the input files must be placed in the 
+5. You can add your own Sudoku plus solutions to validate against the program (Option 1) , but please note the input files must be placed in the 
 "inputs" directory in the same folder as the SudokuLint.jar file and they should be in the form of a CSV (comma-separated value) text file with 
 columns separated by commas and rows separated by ‘\n’ return characters. Sample input below:
-1,4,2,3
-2,3,1,4
-4,2,3,1
-3,1,4,2
+1,4,2,3  
+2,3,1,4  
+4,2,3,1  
+3,1,4,2  
 
 Package Contents:
 ----------------
