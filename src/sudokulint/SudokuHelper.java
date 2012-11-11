@@ -68,7 +68,7 @@ public class SudokuHelper {
                     }
                     newRow++;
                 }
-                if(checkDuplicates(newArray))
+                if(containsDuplicate(newArray))
                     return false;
             }
         }
@@ -87,7 +87,7 @@ public class SudokuHelper {
     }
     
     //I check duplicates in 2d arrays: mainly used to check the sub grids in our case
-    private boolean checkDuplicates(final int[][] inputarray){
+    private boolean containsDuplicate(final int[][] inputarray){
         Set<Integer> cells = new HashSet<Integer>();
         for (int[] i : inputarray){
             for(int values : i){
