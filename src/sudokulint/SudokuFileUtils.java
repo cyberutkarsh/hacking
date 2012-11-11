@@ -1,18 +1,31 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sudokulint;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  *
- * @author hacker
+ * @author Utkarsh C
  */
-public class SudokuFileUtils {        
+public class SudokuFileUtils {            
+    final File folder;
+            
+    SudokuFileUtils(){
+        folder = new File("inputs");        
+    }
+    
+    //I return all files in the directory
+    public HashMap<String,String> listFilesInFolder() {
+        HashMap hmFiles= new HashMap();        
+        for (final File fileEntry : folder.listFiles()) {
+            hmFiles.put(fileEntry.getName(),fileEntry.getPath());
+        }
+        
+        return hmFiles;
+    } 
     
     //I read files into arrays
     public int[][] readFiletoArray(String filename){                                        

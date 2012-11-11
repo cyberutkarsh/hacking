@@ -1,15 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package sudokulint;
 
 import java.io.*;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  *
- * @author hacker
+ * @author Utkarsh C
  */
 public class SudokuLint {
 
@@ -18,21 +14,25 @@ public class SudokuLint {
      */
     public static void main(String[] args) {                        
         
-        //Build the initial data
-        SudokuFileUtils su = new SudokuFileUtils();
-        final int[][] solutiongrid1 = su.readFiletoArray("inputs/sampleInput_4x4.txt");
-        final int[][] solutiongrid2 = su.readFiletoArray("inputs/sampleInput_9x9.txt");
-        final int[][] solutiongrid3 = su.readFiletoArray("inputs/sample_payal.txt");
-        final int[][] solutiongrid4 = su.readFiletoArray("inputs/sample_mehul.txt");
-        
+        //Initialize the objects
+        HashMap hmFiles = new HashMap();
         SudokuHelper sh = new SudokuHelper();
-        //System.out.println(sh.calculateExecutionTime(solutiongrid1));
-        //System.out.println(sh.calculateExecutionTime(solutiongrid2));
-        //System.out.println(sh.validateSudoku(solutiongrid3));
-        //System.out.println(sh.calculateExecutionTime(solutiongrid4));
+        SudokuFileUtils sfu = new SudokuFileUtils();                
         
         //Dump the system Info
         sh.getSystemInfo();
+        
+        //Get the files HashMap
+        hmFiles=sfu.listFilesInFolder();
+        
+        //Validate all the inputs files in the inputs directory
+        Set set = hmFiles.entrySet();
+        Iterator i = set.iterator();
+        while(i.hasNext()){
+            Map.Entry me = (Map.Entry)i.next();
+            System.out.println("Validating: "+me.getKey()+" - "+sh.validateSudoku(sfu.readFiletoArray((String)me.getValue())));
+            System.out.println();
+        }
         
         //Testing running times
         for(int gridroot=2;gridroot<101;gridroot++){

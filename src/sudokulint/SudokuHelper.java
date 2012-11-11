@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template reader the editor.
- */
 package sudokulint;
 
 import java.util.Arrays;
@@ -12,7 +8,7 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
- * @author hacker
+ * @author Utkarsh C
  */
 public class SudokuHelper {    
     
