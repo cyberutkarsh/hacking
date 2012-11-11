@@ -11,7 +11,7 @@ in the zip archive that contains the program jar.
 How To Run:
 -------
 1. Unzip the contents of the SudokuLint_Utkarshc.zip into its folder
-2. Navigate to the folder where the files were unzipped
+2. Navigate to the folder where the files were unzipped using your terminal or command prompt.
 3. use "java -jar SudokuLint.jar"command to execute the program
 4. You will see 3 options, please find below their usage
     Option 1: Validate Sudoku's: This option will validate all the probable Sudoku solutions provided in the .txt format in the "inputs" folder.
