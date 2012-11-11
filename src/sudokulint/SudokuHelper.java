@@ -33,11 +33,11 @@ public class SudokuHelper {
     // I check the Sudoku solutions
     public String validateSudoku(int[][] solutiongrid){                
         final int[][] rowarray = solutiongrid;
-        final int[][] columnarray = transpose(solutiongrid);
+        final int[][] columnarray = transpose(solutiongrid); //Transpose the array so that we can check the columns now for dupes
         
         //Check all rows and columns for dupes
         for(int i=0;i<solutiongrid.length;i++){                                                
-            if(checkDuplicates(rowarray[i]) || checkDuplicates(columnarray[i]))
+            if(containsDuplicate(rowarray[i]) || containsDuplicate(columnarray[i]))
                 return solutioninvalid;
         }
         
@@ -77,7 +77,7 @@ public class SudokuHelper {
     }
     
     //I check duplicates in the 1D array
-    private boolean checkDuplicates(final int[] inputarray){
+    private boolean containsDuplicate(final int[] inputarray){
         Set<Integer> cells = new HashSet<Integer>();
         for (int i : inputarray){
             if (cells.contains(i) || (i < 1 || i > inputarray.length)) return true;

@@ -42,7 +42,7 @@ public class SudokuLint {
                       System.out.println();
                       while(i.hasNext()){
                         Map.Entry me = (Map.Entry)i.next();
-                        System.out.println("Validating: "+me.getKey()+" - "+sh.validateSudoku(sfu.readFiletoArray((String)me.getValue())));
+                        System.out.println(">> Validating: "+me.getKey()+" - "+sh.validateSudoku(sfu.readFiletoArray((String)me.getValue())));
                         System.out.println();
                       }
                       break;
