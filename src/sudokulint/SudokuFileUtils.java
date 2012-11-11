@@ -3,6 +3,7 @@ package sudokulint;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -13,6 +14,13 @@ import java.util.HashMap;
  */
 public class SudokuFileUtils {            
     final File folder;
+    final FilenameFilter filter= new FilenameFilter() {
+
+        @Override
+        public boolean accept(File folder, String filename) {
+            return filename.endsWith(".txt");
+        }
+    };
             
     SudokuFileUtils(){
         folder = new File("inputs");        
@@ -21,7 +29,7 @@ public class SudokuFileUtils {
     //I return all files in the directory
     public HashMap<String,String> listFilesInFolder() {
         HashMap hmFiles= new HashMap();        
-        for (final File fileEntry : folder.listFiles()) {
+        for (final File fileEntry : folder.listFiles(filter)) {
             hmFiles.put(fileEntry.getName(),fileEntry.getPath());
         }
         
